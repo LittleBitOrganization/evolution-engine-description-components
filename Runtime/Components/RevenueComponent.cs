@@ -9,7 +9,8 @@ namespace LittleBit.Modules.Description.Components
         public string ResourceId => _resourceId;
 
         [SerializeField] private string _resourceId = "resources/gold";
-        
+        [SerializeField] private float _timeRevenue = 1;
+        public float TimeRevenue => _timeRevenue;
         public double GetRevenue(int level)
         {
             if (_growthFunction == null) return 0;
@@ -21,5 +22,7 @@ namespace LittleBit.Modules.Description.Components
         {
             return GetRevenue(level);
         }
+
+        
     }
 }
