@@ -5,7 +5,7 @@ using System.Reflection;
 using NaughtyAttributes;
 using UnityEngine;
 
-namespace LittleBit.Modules.Description.Utils
+namespace LittleBit.Modules.Description.Utils //TODO: сменить namespace
 {
     [Serializable]
     public class Requirement
@@ -24,15 +24,12 @@ namespace LittleBit.Modules.Description.Utils
         private List<string> FieldName => _fieldName;
         private List<string> _fieldName = new List<string>();
         private List<FieldInfo> _fieldInfoList = new List<FieldInfo>();
-        
+
         public string GetValue() => _value;
 
         public IDataHolder DataHolder
         {
-            get
-            {
-                return _dataHolder.Result;
-            }
+            get { return _dataHolder.Result; }
             set
             {
                 _dataHolder.Result = value;
@@ -63,47 +60,43 @@ namespace LittleBit.Modules.Description.Utils
 
         public bool Check(Type type, object value)
         {
-            if (type == _type)
-            {
-                GetDynamicValues(_type, value, out dynamic valueNew, out dynamic currentValue);
-                
-                switch (_operator)
-                {
-                    case Operator.Equals: return valueNew == currentValue;
-                    case Operator.NotEquals: return valueNew != currentValue;
-                    case Operator.EqualsOrGreater: return valueNew >= currentValue;
-                    case Operator.EqualsOrLess: return valueNew <= currentValue;
-                    case Operator.Greater: return valueNew > currentValue;
-                    case Operator.Less: return valueNew < currentValue;
+            if (!type.Equals(type)) throw new Exception();
+            
+            return Compare(type, GetValue(), value);
+        }
 
-                    default: throw new Exception();
-                }
+        private bool Compare(Type comparsionType, object firstValue, object secondValue)
+        {
+            var firstValueComparable = (Convert.ChangeType(firstValue, comparsionType) as IComparable);
+            var secondValueComparable = (Convert.ChangeType(secondValue, comparsionType) as IComparable);
+
+            if (firstValueComparable == null || secondValueComparable == null)
+            {
+                Debug.Log("Can't compare " + firstValue + " and " + secondValue);
+                return false;
+            }
+            
+            switch (_operator)
+            {
+                case Operator.Equals: return firstValue.Equals(secondValue);
+                case Operator.NotEquals: return !(firstValue.Equals(secondValue));
+                case Operator.EqualsOrGreater: return secondValueComparable.CompareTo(firstValueComparable) >= 0;
+                case Operator.EqualsOrLess: return secondValueComparable.CompareTo(firstValueComparable) <= 0;
+                case Operator.Greater: return secondValueComparable.CompareTo(firstValueComparable) > 0;
+                case Operator.Less: return secondValueComparable.CompareTo(firstValueComparable) < 0;
             }
 
-            throw new Exception();
-        }
-
-
-        public bool Compare<T>(T x, T y)
-        {
-            return EqualityComparer<T>.Default.Equals(x, y);
-        }
-
-
-        private void GetDynamicValues(Type type, object newValue, out dynamic value, out dynamic currentValue)
-        {
-            value = Convert.ChangeType(newValue, type);
-            currentValue = Convert.ChangeType(GetValue(), type);
+            return false;
         }
 
 
         private void OnValueChanged()
         {
             Debug.Log("OnValueChanged");
-            
+
             _fieldInfoList = new List<FieldInfo>();
             _fieldName = new List<string>();
-            
+
             if (!HasDataHolder)
             {
                 _fieldName.Clear();
