@@ -1,6 +1,5 @@
 namespace LittleBit.Modules.Description.Components
 {
-
     public class AttributeBasedOnLevel : Attribute
     {
         private ValueBasedOnLevel _valueBasedOnLevel;
