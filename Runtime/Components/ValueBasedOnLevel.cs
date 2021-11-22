@@ -8,7 +8,7 @@ using UnityEngine;
 namespace LittleBit.Modules.Description.Components
 {
     [Serializable]
-    public abstract class ValueBasedOnLevel
+    public class ValueBasedOnLevel
     {
         [SerializeField, AllowNesting, OnValueChanged(nameof(OnValueChanged))]
         private double _startValue = 0;
@@ -50,7 +50,10 @@ namespace LittleBit.Modules.Description.Components
             curve.keys = keyframes.ToArray();
         }
 
-        public abstract double GetValue(int level);
+        public virtual double GetValue(int level)
+        {
+            return _growthFunction.GetValue(_startValue, level, _xArgument);
+        }
 
         public void SetMaxLevel(int maxLevel)
         {

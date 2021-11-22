@@ -1,4 +1,5 @@
 ﻿using System;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace LittleBit.Modules.Description.Components
@@ -10,7 +11,7 @@ namespace LittleBit.Modules.Description.Components
 
         [SerializeField] private string _resourceId = "resources/gold";
 
-        public ValueBasedOnLevel baseCost;
+        [AllowNesting] public ValueBasedOnLevel baseCost;
 
         [HideInInspector] public AttributeBasedOnLevel cost;
 
