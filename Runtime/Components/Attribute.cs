@@ -10,9 +10,9 @@ namespace LittleBit.Modules.Description.Components
         private List<RawBonus> _rawBonuses;
         private List<FinalBonus> _finalBonuses;
 
-        private float _finalValue = 0;
+        private double _finalValue = 0;
         
-        public Attribute(float baseValue, float baseMultiplier) : base(baseValue, baseMultiplier)
+        public Attribute(double baseValue, double baseMultiplier) : base(baseValue, baseMultiplier)
         {
             _rawBonuses = new List<RawBonus>();
             _finalBonuses = new List<FinalBonus>();
@@ -42,14 +42,14 @@ namespace LittleBit.Modules.Description.Components
             _finalBonuses.Remove(bonus);
         }
 
-        public float CalculateValue()
+        public double CalculateValue()
         {
             if (!_isDirty) return _finalValue;
             
             _finalValue = _baseValue;
 
-            var rawBonusValue = 0f;
-            var rawBonusMultiplier = 0f;
+            var rawBonusValue = 0d;
+            var rawBonusMultiplier = 0d;
 
             foreach (var bonus in _rawBonuses)
             {
@@ -60,8 +60,8 @@ namespace LittleBit.Modules.Description.Components
             _finalValue += rawBonusMultiplier;
             _finalValue *= (1 + rawBonusMultiplier);
             
-            var finalBonusValue = 0f;
-            var finalBonusMultiplier = 0f;
+            var finalBonusValue = 0d;
+            var finalBonusMultiplier = 0d;
 
             foreach (var bonus in _finalBonuses)
             {

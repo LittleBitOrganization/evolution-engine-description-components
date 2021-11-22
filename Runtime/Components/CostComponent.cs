@@ -4,21 +4,19 @@ using UnityEngine;
 namespace LittleBit.Modules.Description.Components
 {
     [Serializable]
-    public class CostComponent : ValueBasedOnLevel
+    public class CostComponent : Component
     {
         public string ResourceId => _resourceId;
 
         [SerializeField] private string _resourceId = "resources/gold";
         
-        public double GetCost(int level)
-        {
-            if (_growthFunction == null) return 0;
-            return _growthFunction.GetValue(StartValue, level, XArgument);
-        }
+        [SerializeField] private ValueBasedOnLevel baseCost;
+        
+        [HideInInspector] public AttributeBasedOnLevel cost;
 
-        protected override double GetValue(int level)
+        public override void InitializeAttributes()
         {
-            return GetCost(level);
+            cost = new AttributeBasedOnLevel(baseCost, 0);
         }
     }
 }

@@ -4,25 +4,21 @@ using UnityEngine;
 namespace LittleBit.Modules.Description.Components
 {
     [Serializable]
-    public class RevenueComponent : ValueBasedOnLevel
+    public class RevenueComponent : Component
     {
         public string ResourceId => _resourceId;
 
         [SerializeField] private string _resourceId = "resources/gold";
         [SerializeField] private float _timeRevenue = 1;
-        public float TimeRevenue => _timeRevenue;
-        public double GetRevenue(int level)
-        {
-            if (_growthFunction == null) return 0;
-            if (level <= 0) return 0;
-            return _growthFunction.GetValue(StartValue, level - 1, XArgument);
-        }
 
-        protected override double GetValue(int level)
-        {
-            return GetRevenue(level);
-        }
-
+        [SerializeField] private ValueBasedOnLevel baseRevenue, baseTime;
         
+        [HideInInspector] public AttributeBasedOnLevel revenue, time;
+        
+        public override void InitializeAttributes()
+        {
+            revenue = new AttributeBasedOnLevel(baseRevenue, 0);
+            time = new AttributeBasedOnLevel(baseTime, 0);
+        }
     }
 }

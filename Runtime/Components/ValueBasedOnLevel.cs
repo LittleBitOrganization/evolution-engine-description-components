@@ -50,7 +50,7 @@ namespace LittleBit.Modules.Description.Components
             curve.keys = keyframes.ToArray();
         }
 
-        protected abstract double GetValue(int level);
+        public abstract double GetValue(int level);
 
         public void SetMaxLevel(int maxLevel)
         {
@@ -59,3 +59,4 @@ namespace LittleBit.Modules.Description.Components
         }
     }
 }
+

@@ -5,7 +5,10 @@ namespace LittleBit.Modules.Description.Components
     [Serializable]
     public class Component
     {
-
+        public virtual void InitializeAttributes()
+        {
+            
+        }
     }
 }
 
