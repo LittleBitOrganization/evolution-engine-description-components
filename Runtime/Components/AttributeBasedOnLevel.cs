@@ -1,19 +1,21 @@
-using LittleBit.Modules.Description.Components;
-
-public class AttributeBasedOnLevel : Attribute
+namespace LittleBit.Modules.Description.Components
 {
-    private ValueBasedOnLevel _valueBasedOnLevel;
 
-    public AttributeBasedOnLevel(ValueBasedOnLevel valueBasedOnLevel, double baseMultiplier) : base(
-        valueBasedOnLevel.StartValue, baseMultiplier)
+    public class AttributeBasedOnLevel : Attribute
     {
-        _valueBasedOnLevel = valueBasedOnLevel;
-    }
+        private ValueBasedOnLevel _valueBasedOnLevel;
 
-    public double CalculateValue(int level)
-    {
-        SetBaseValue(_valueBasedOnLevel.GetValue(level));
+        public AttributeBasedOnLevel(ValueBasedOnLevel valueBasedOnLevel, double baseMultiplier) : base(
+            valueBasedOnLevel.StartValue, baseMultiplier)
+        {
+            _valueBasedOnLevel = valueBasedOnLevel;
+        }
 
-        return CalculateValue();
+        public double CalculateValue(int level)
+        {
+            SetBaseValue(_valueBasedOnLevel.GetValue(level));
+
+            return CalculateValue();
+        }
     }
 }
