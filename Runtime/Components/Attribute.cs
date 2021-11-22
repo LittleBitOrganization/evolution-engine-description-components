@@ -20,6 +20,8 @@ namespace LittleBit.Modules.Description.Components
 
         public void AddRawBonus(RawBonus bonus)
         {
+            _isDirty = true;
+            
             _rawBonuses.Add(bonus);
         }
         
@@ -27,11 +29,15 @@ namespace LittleBit.Modules.Description.Components
         {
             if(!_rawBonuses.Contains(bonus)) return;
 
+            _isDirty = true;
+
             _rawBonuses.Remove(bonus);
         }
 
         public void AddFinalBous(FinalBonus bonus)
         {
+            _isDirty = true;
+            
             _finalBonuses.Add(bonus);
         }
 
@@ -39,6 +45,8 @@ namespace LittleBit.Modules.Description.Components
         {
             if(!_finalBonuses.Contains(bonus)) return;
 
+            _isDirty = true;
+            
             _finalBonuses.Remove(bonus);
         }
 
