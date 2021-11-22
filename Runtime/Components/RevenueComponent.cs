@@ -4,7 +4,7 @@ using UnityEngine;
 namespace LittleBit.Modules.Description.Components
 {
     [Serializable]
-    public class RevenueComponent : ComponentGrowth
+    public class RevenueComponent : ValueBasedOnLevel
     {
         public string ResourceId => _resourceId;
 
