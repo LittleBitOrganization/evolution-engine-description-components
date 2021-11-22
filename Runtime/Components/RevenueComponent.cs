@@ -11,7 +11,7 @@ namespace LittleBit.Modules.Description.Components
         [SerializeField] private string _resourceId = "resources/gold";
         [SerializeField] private float _timeRevenue = 1;
 
-        [SerializeField] private ValueBasedOnLevel baseRevenue, baseTime;
+        public ValueBasedOnLevel baseRevenue, baseTime;
         
         [HideInInspector] public AttributeBasedOnLevel revenue, time;
         

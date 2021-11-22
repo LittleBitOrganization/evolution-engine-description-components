@@ -9,9 +9,9 @@ namespace LittleBit.Modules.Description.Components
         public string ResourceId => _resourceId;
 
         [SerializeField] private string _resourceId = "resources/gold";
-        
-        [SerializeField] private ValueBasedOnLevel baseCost;
-        
+
+        public ValueBasedOnLevel baseCost;
+
         [HideInInspector] public AttributeBasedOnLevel cost;
 
         public override void InitializeAttributes()
