@@ -52,6 +52,7 @@ namespace LittleBit.Modules.Description.Components
 
         public virtual double GetValue(int level)
         {
+            if (_growthFunction == null) return 0;
             return _growthFunction.GetValue(_startValue, level, _xArgument);
         }
 
