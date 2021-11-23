@@ -26,14 +26,14 @@ namespace LittleBit.Modules.Description.Components
 
         [SerializeField, AllowNesting, HideIf(nameof(IsNotGrowthComponent))]
         private List<KeyCurve> _keyCurves = new List<KeyCurve>();
-
+        
         private int _maxLevel = 0;
 
         public double StartValue => _startValue;
 
         public float XArgument => _xArgument;
 
-        protected void OnValueChanged()
+        protected virtual void OnValueChanged()
         {
             _keyCurves.Clear();
             if (!_growthFunction) return;
@@ -53,6 +53,7 @@ namespace LittleBit.Modules.Description.Components
         public virtual double GetValue(int level)
         {
             if (_growthFunction == null) return 0;
+            
             return _growthFunction.GetValue(_startValue, level, _xArgument);
         }
 
@@ -63,4 +64,3 @@ namespace LittleBit.Modules.Description.Components
         }
     }
 }
-

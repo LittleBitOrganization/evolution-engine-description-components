@@ -23,8 +23,7 @@ namespace LittleBit.Modules.Description.Components
         {
             return _baseMultiplier;
         }
-        
-        
+
         public void SetBaseValue(double value)
         {
             _baseValue = value;

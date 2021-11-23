@@ -1,6 +1,7 @@
 
 using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace LittleBit.Modules.Description.Components
 {
@@ -65,8 +66,8 @@ namespace LittleBit.Modules.Description.Components
                 rawBonusMultiplier += bonus.GetBaseMultiplier();
             }
 
-            _finalValue += rawBonusMultiplier;
-            _finalValue *= (1 + rawBonusMultiplier);
+            _finalValue += rawBonusValue;
+            _finalValue *= (1d + rawBonusMultiplier);
             
             var finalBonusValue = 0d;
             var finalBonusMultiplier = 0d;
@@ -77,11 +78,11 @@ namespace LittleBit.Modules.Description.Components
                 finalBonusMultiplier += bonus.GetBaseMultiplier();
             }
             
-            _finalValue += finalBonusMultiplier;
-            _finalValue *= (1 + finalBonusMultiplier);
+            _finalValue += finalBonusValue;
+            _finalValue *= (1d + finalBonusMultiplier);
 
             _isDirty = false;
-
+            
             return _finalValue;
         }
     }
