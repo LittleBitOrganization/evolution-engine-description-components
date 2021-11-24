@@ -9,7 +9,7 @@ namespace InternalAssets.Scripts.Game.Descriptions
     [Serializable]
     public class CostBasedOnLevel : ValueBasedOnLevel
     {
-        protected virtual void OnValueChanged()
+        protected override void OnValueChanged()
         {
             _keyCurves.Clear();
             if (!_growthFunction) return;
