@@ -2,7 +2,7 @@ namespace LittleBit.Modules.Description.Components
 {
     public class RawBonus : BaseAttribute
     {
-        public RawBonus(float baseValue, float baseMultiplier) : base(baseValue, baseMultiplier)
+        public RawBonus(double baseValue, double baseMultiplier) : base(baseValue, baseMultiplier)
         {
             
         }
