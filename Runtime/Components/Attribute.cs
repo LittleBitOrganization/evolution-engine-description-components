@@ -89,6 +89,6 @@ namespace LittleBit.Modules.Description.Components
     
     public interface IAttributesHandler
     {
-        public void Initialize();
+        public void InitializeAttributes();
     }
 }
