@@ -39,9 +39,10 @@ namespace LittleBit.Modules.Description.Components
             if (!_growthFunction) return;
 
             List<Keyframe> keyframes = new List<Keyframe>();
+            
             for (int i = 1; i < _maxLevel; i++)
             {
-                var keyframe = new Keyframe(i-1, (float) GetValue(i-1));
+                var keyframe = new Keyframe(i, (float) GetValue(i-1));
 
                 _keyCurves.Add(new KeyCurve(keyframe));
                 keyframes.Add(keyframe);
