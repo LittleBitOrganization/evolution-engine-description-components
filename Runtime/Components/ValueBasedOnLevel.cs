@@ -11,7 +11,7 @@ namespace LittleBit.Modules.Description.Components
     public class ValueBasedOnLevel
     {
         [SerializeField, AllowNesting, OnValueChanged(nameof(OnValueChanged))]
-        private double _startValue = 0;
+        protected double _startValue = 0;
 
         [SerializeField, AllowNesting, OnValueChanged(nameof(OnValueChanged))]
         protected GrowthFunction _growthFunction;
@@ -19,15 +19,15 @@ namespace LittleBit.Modules.Description.Components
         protected bool IsNotGrowthComponent => _growthFunction == null;
 
         [SerializeField, AllowNesting, HideIf(nameof(IsNotGrowthComponent)), OnValueChanged(nameof(OnValueChanged))]
-        private float _xArgument;
+        protected float _xArgument;
 
         [SerializeField, AllowNesting, HideIf(nameof(IsNotGrowthComponent))]
-        private AnimationCurve curve;
+        protected AnimationCurve curve;
 
         [SerializeField, AllowNesting, HideIf(nameof(IsNotGrowthComponent))]
-        private List<KeyCurve> _keyCurves = new List<KeyCurve>();
+        protected List<KeyCurve> _keyCurves = new List<KeyCurve>();
         
-        private int _maxLevel = 0;
+        protected int _maxLevel = 0;
 
         public double StartValue => _startValue;
 
@@ -41,7 +41,7 @@ namespace LittleBit.Modules.Description.Components
             List<Keyframe> keyframes = new List<Keyframe>();
             for (int i = 0; i < _maxLevel; i++)
             {
-                var keyframe = new Keyframe(i, (float) GetValue(i));
+                var keyframe = new Keyframe(i+1, (float) GetValue(i+1));
 
                 _keyCurves.Add(new KeyCurve(keyframe));
                 keyframes.Add(keyframe);
