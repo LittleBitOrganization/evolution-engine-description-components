@@ -39,7 +39,6 @@ namespace LittleBit.Modules.Description.Utils //TODO: сменить namespace
 
         private void OnSelectedField()
         {
-            Debug.Log("OnSelectedFieldChanged " + _fieldInfoList.Count);
             _type = GetTypeByField(_field, _fieldInfoList);
         }
 
@@ -92,8 +91,6 @@ namespace LittleBit.Modules.Description.Utils //TODO: сменить namespace
 
         private void OnValueChanged()
         {
-            Debug.Log("OnValueChanged");
-
             _fieldInfoList = new List<FieldInfo>();
             _fieldName = new List<string>();
 
