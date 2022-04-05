@@ -11,15 +11,18 @@ namespace LittleBit.Modules.Description.Components
     public class ValueBasedOnLevel
     {
         [SerializeField, AllowNesting, OnValueChanged(nameof(OnValueChanged))]
-        protected double _startValue = 0;
-
-        [SerializeField, AllowNesting, OnValueChanged(nameof(OnValueChanged))]
         protected GrowthFunction _growthFunction;
-
-        protected bool IsNotGrowthComponent => _growthFunction == null;
-
-        [SerializeField, AllowNesting, HideIf(nameof(IsNotGrowthComponent)), OnValueChanged(nameof(OnValueChanged))]
+        
+        [SerializeField, AllowNesting, HideIf(nameof(IsShowStartValue)), OnValueChanged(nameof(OnValueChanged))]
+        protected double _startValue = 0;
+        
+        [SerializeField, AllowNesting, HideIf(nameof(IsShowXArgument)), OnValueChanged(nameof(OnValueChanged))]
         protected float _xArgument;
+
+        private bool IsShowStartValue => IsNotGrowthComponent == false && _growthFunction.HasStartValue;
+        private bool IsShowXArgument => IsNotGrowthComponent == false && _growthFunction.HasXArgument;
+        protected bool IsNotGrowthComponent => _growthFunction == null;
+        
 
         [SerializeField, AllowNesting, HideIf(nameof(IsNotGrowthComponent))]
         protected AnimationCurve curve;
