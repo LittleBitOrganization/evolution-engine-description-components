@@ -13,10 +13,10 @@ namespace LittleBit.Modules.Description.Components
         [SerializeField, AllowNesting, OnValueChanged(nameof(OnValueChanged))]
         protected GrowthFunction _growthFunction;
         
-        [SerializeField, AllowNesting, HideIf(nameof(IsShowStartValue)), OnValueChanged(nameof(OnValueChanged))]
+        [SerializeField, AllowNesting, ShowIf(nameof(IsShowStartValue)), OnValueChanged(nameof(OnValueChanged))]
         protected double _startValue = 0;
         
-        [SerializeField, AllowNesting, HideIf(nameof(IsShowXArgument)), OnValueChanged(nameof(OnValueChanged))]
+        [SerializeField, AllowNesting, ShowIf(nameof(IsShowXArgument)), OnValueChanged(nameof(OnValueChanged))]
         protected float _xArgument;
 
         private bool IsShowStartValue => IsNotGrowthComponent == false && _growthFunction.HasStartValue;
