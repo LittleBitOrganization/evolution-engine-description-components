@@ -1,5 +1,4 @@
 ﻿using System;
-using InternalAssets.Scripts.Game.Descriptions;
 using NaughtyAttributes;
 using UnityEngine;
 

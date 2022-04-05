@@ -4,7 +4,7 @@ using LittleBit.Modules.Description.Components;
 using LittleBit.Modules.Description.Utils;
 using UnityEngine;
 
-namespace InternalAssets.Scripts.Game.Descriptions
+namespace LittleBit.Modules.Description
 {
     [Serializable]
     public class CostBasedOnLevel : ValueBasedOnLevel

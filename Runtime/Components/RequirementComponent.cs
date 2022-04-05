@@ -50,7 +50,7 @@ namespace LittleBit.Modules.Description.Components
         private bool IsRequirementValid<T>(Requirement requirement, FieldInfo fieldInfo,
             IDataStorageService dataStorageService) where T : Data, new()
         {
-            string keyRequirementData = requirement.DataHolder.GetDataKey();
+            string keyRequirementData = requirement.DataHolder.GetKey();
             T dataRequirementData = dataStorageService.GetData<T>(keyRequirementData);
 
             var typeFieldGroupSaveData = fieldInfo.FieldType;

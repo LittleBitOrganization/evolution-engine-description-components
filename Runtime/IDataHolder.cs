@@ -2,9 +2,8 @@
 
 namespace LittleBit.Modules.Description
 {
-    public interface IDataHolder
+    public interface IDataHolder : IKeyHolder
     {
         public Type GetSaveDataType();
-        public string GetDataKey();
     }
 }
