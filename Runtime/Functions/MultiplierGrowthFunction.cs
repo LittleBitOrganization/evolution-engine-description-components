@@ -17,5 +17,8 @@ namespace LittleBit.Modules.Description.Functions
             double sum = startValue * multiplier;
             return sum;
         }
+
+        public override bool HasStartValue { get; protected set; } = true;
+        public override bool HasXArgument { get; protected set; } = true;
     }
 }
