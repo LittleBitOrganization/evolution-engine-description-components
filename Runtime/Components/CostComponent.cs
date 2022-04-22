@@ -7,9 +7,13 @@ namespace LittleBit.Modules.Description.Components
     [Serializable]
     public class CostComponent : Component
     {
-        public string ResourceId => _resourceId;
+        public string ResourceId => _resource.Result.GetKey();
 
-        [SerializeField] private string _resourceId = "resources/gold";
+        public IResourceConfig ResourceConfig => _resource.Result;
+
+        [Obsolete(nameof(_resourceId) + " is deprecated, please use " + nameof(_resource) + " instead.")]
+        [SerializeField, AllowNesting, DisableIf(nameof(Boolean.TrueString))] private string _resourceId = "resources/gold";
+        [SerializeField] private ResourceConfigInterfaceContainer _resource;
 
         [AllowNesting] public CostBasedOnLevel baseCost;
 
