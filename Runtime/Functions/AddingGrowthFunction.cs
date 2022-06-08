@@ -1,15 +1,15 @@
-﻿using System;
-using NaughtyAttributes;
+﻿using NaughtyAttributes;
 using UnityEngine;
 
 namespace LittleBit.Modules.Description.Functions
 {
-    [CreateAssetMenu(fileName = "AddingGrowthFunction", menuName = "DataSettingsManager/GrowthComponent/Adding", order = 0)]
+    [CreateAssetMenu(fileName = "AddingGrowthFunction", 
+        menuName = "DataSettingsManager/GrowthComponent/Adding", order = 0)]
     public class AddingGrowthFunction : GrowthFunction
     {
-        [SerializeField, DisableIf(nameof(Boolean.TrueString))] 
-        private string _description = "Каждый уровень прибавляет к предыдущему xArgument";
-        
+        [SerializeField, InfoBox("Каждый уровень прибавляет к предыдущему уровню xArgument", EInfoBoxType.Error)]
+        private bool _checkMe = false;
+
         public override double GetValue(double startValue, int levels, float xArgument)
         {
             double sum = startValue;

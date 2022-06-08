@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace LittleBit.Modules.Description
 {
-    [Serializable]
+    [Serializable, Obsolete("Class is deprecated, use ProgressionValue instead")]
     public class CostBasedOnLevel : ValueBasedOnLevel
     {
         protected override void OnValueChanged()

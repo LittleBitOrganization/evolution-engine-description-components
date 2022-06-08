@@ -1,5 +1,4 @@
-﻿using System;
-using NaughtyAttributes;
+﻿using NaughtyAttributes;
 using UnityEngine;
 
 namespace LittleBit.Modules.Description.Functions
@@ -8,8 +7,8 @@ namespace LittleBit.Modules.Description.Functions
         menuName = "DataSettingsManager/GrowthComponent/Multiplier", order = 0)]
     public class MultiplierGrowthFunction : GrowthFunction
     {
-        [SerializeField, DisableIf(nameof(Boolean.TrueString))]
-        private string _description = "Каждый уровень умножает предыдущий уровень на xArgument";
+        [SerializeField, InfoBox("Каждый уровень умножает предыдущий уровень на xArgument", EInfoBoxType.Error)]
+        private bool _checkMe = false;
 
         public override double GetValue(double startValue, int levels, float xArgument)
         {
