@@ -2,7 +2,6 @@ using System.Collections.Generic;
 using System.Text;
 using LittleBit.Modules.Description;
 using NaughtyAttributes;
-using UnityEditor;
 using UnityEngine;
 
 namespace LittleBit.Modules.Description.ResourceGenerator
