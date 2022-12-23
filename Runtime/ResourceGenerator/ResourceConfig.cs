@@ -38,5 +38,11 @@ namespace LittleBit.Modules.Description.ResourceGenerator
         {
             return _warehouseSprite;
         }
+        
+        public static implicit operator string(ResourceConfig resourceConfig)
+        {
+            return resourceConfig.GetKey();
+        }
+        
     }
 }
