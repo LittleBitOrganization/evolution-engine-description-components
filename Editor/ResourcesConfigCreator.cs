@@ -11,16 +11,16 @@ namespace LittleBit.Modules.Description.ResourceGenerator
         
         private static string FullPath => Constants.ResourcesConfigPath + "/" + AssetName + Extension; 
         
-        [MenuItem("Tools/Configs/ResourcesConfig")]
-        public static void CreateResourceIdsConfig()
-        {
-            var instance = ScriptableObject.CreateInstance<ResourceConfigIDs>();
-            
-            CheckOrCreateDirectory();
-
-            AssetDatabase.CreateAsset(instance, FullPath);
-            AssetDatabase.SaveAssets();
-        }
+        // [MenuItem("Tools/Configs/ResourcesConfig")]
+        // public static void CreateResourceIdsConfig()
+        // {
+        //     var instance = ScriptableObject.CreateInstance<ResourceConfigIDs>();
+        //     
+        //     CheckOrCreateDirectory();
+        //
+        //     AssetDatabase.CreateAsset(instance, FullPath);
+        //     AssetDatabase.SaveAssets();
+        // }
 
         private static void CheckOrCreateDirectory()
         {
