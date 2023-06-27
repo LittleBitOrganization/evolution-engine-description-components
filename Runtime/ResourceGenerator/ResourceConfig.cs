@@ -1,11 +1,10 @@
 using System.Collections.Generic;
-using System.Text;
-using LittleBit.Modules.Description;
 using NaughtyAttributes;
 using UnityEngine;
 
 namespace LittleBit.Modules.Description.ResourceGenerator
 {
+    [CreateAssetMenu(fileName = nameof(ResourceConfig), menuName = "Configs/" + nameof(ResourceConfig))]
     public class ResourceConfig : ScriptableObject, IResourceConfig
     {
         [SerializeField, Dropdown(nameof(ResourceIds))] private string _key;
